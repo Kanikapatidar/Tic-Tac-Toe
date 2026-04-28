@@ -1,20 +1,35 @@
 public class TicTacToe {
 
-    // Method to convert slot (1–9) to row & column
-    public static int[] convertToIndex(int slot) {
-        int row = (slot - 1) / 3;
-        int col = (slot - 1) % 3;
+    // Method to validate move
+    public static boolean isValidMove(char[][] board, int row, int col) {
 
-        return new int[]{row, col};
+        // Check bounds (0–2)
+        if (row < 0 || row > 2 || col < 0 || col > 2) {
+            return false;
+        }
+
+        // Check if cell is empty
+        if (board[row][col] != '-') {
+            return false;
+        }
+
+        return true; // valid move
     }
 
     public static void main(String[] args) {
-        int slot = 5; // example input
+        char[][] board = {
+            {'-', '-', '-'},
+            {'-', 'X', '-'},
+            {'-', '-', '-'}
+        };
 
-        int[] index = convertToIndex(slot);
+        int row = 1;
+        int col = 1;
 
-        System.out.println("Slot: " + slot);
-        System.out.println("Row: " + index[0]);
-        System.out.println("Column: " + index[1]);
+        if (isValidMove(board, row, col)) {
+            System.out.println("Valid Move");
+        } else {
+            System.out.println("Invalid Move");
+        }
     }
 }
