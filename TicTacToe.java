@@ -1,35 +1,32 @@
 public class TicTacToe {
 
-    // Method to validate move
-    public static boolean isValidMove(char[][] board, int row, int col) {
+    // Method to place a move on the board
+    public static void placeMove(char[][] board, int row, int col, char symbol) {
+        board[row][col] = symbol;   // update board
+    }
 
-        // Check bounds (0–2)
-        if (row < 0 || row > 2 || col < 0 || col > 2) {
-            return false;
+    // Utility method to print board (for testing)
+    public static void printBoard(char[][] board) {
+        for (int i = 0; i < 3; i++) {
+            for (int j = 0; j < 3; j++) {
+                System.out.print(board[i][j] + " ");
+            }
+            System.out.println();
         }
-
-        // Check if cell is empty
-        if (board[row][col] != '-') {
-            return false;
-        }
-
-        return true; // valid move
     }
 
     public static void main(String[] args) {
         char[][] board = {
             {'-', '-', '-'},
-            {'-', 'X', '-'},
+            {'-', '-', '-'},
             {'-', '-', '-'}
         };
 
         int row = 1;
         int col = 1;
+        char symbol = 'X';
 
-        if (isValidMove(board, row, col)) {
-            System.out.println("Valid Move");
-        } else {
-            System.out.println("Invalid Move");
-        }
+        placeMove(board, row, col, symbol); // place move
+        printBoard(board);                  // display updated board
     }
 }
