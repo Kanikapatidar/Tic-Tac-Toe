@@ -1,33 +1,20 @@
-import java.util.Random;
-
 public class TicTacToe {
 
-    static char humanSymbol;
-    static char computerSymbol;
-    static String currentPlayer;
+    // Method to convert slot (1–9) to row & column
+    public static int[] convertToIndex(int slot) {
+        int row = (slot - 1) / 3;
+        int col = (slot - 1) % 3;
 
-    // Toss to decide who starts
-    public static void toss() {
-        Random rand = new Random();
-        int result = rand.nextInt(2); // 0 or 1
-
-        if (result == 0) {
-            currentPlayer = "Human";
-            humanSymbol = 'X';
-            computerSymbol = 'O';
-        } else {
-            currentPlayer = "Computer";
-            humanSymbol = 'O';
-            computerSymbol = 'X';
-        }
-
-        // Display results
-        System.out.println("Toss Result: " + currentPlayer + " starts first!");
-        System.out.println("Human Symbol: " + humanSymbol);
-        System.out.println("Computer Symbol: " + computerSymbol);
+        return new int[]{row, col};
     }
 
     public static void main(String[] args) {
-        toss();
+        int slot = 5; // example input
+
+        int[] index = convertToIndex(slot);
+
+        System.out.println("Slot: " + slot);
+        System.out.println("Row: " + index[0]);
+        System.out.println("Column: " + index[1]);
     }
 }
